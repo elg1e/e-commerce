@@ -24,8 +24,8 @@ def login(request):
         login_form = UserLoginForm(request.POST)
 
         if login_form.is_valid():
-            user = auth.authenticate(username = request.POST['username'],
-                                     password = request.POST['password'])
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password'])
         if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
@@ -47,8 +47,8 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()
 
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password1'])
+            user = auth.authenticate(username = request.POST['username'],
+                                     password = request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
